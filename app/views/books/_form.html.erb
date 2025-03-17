@@ -1,0 +1,43 @@
+<div class="form-container">
+    <%= form_with(model: book) do |form| %>
+    <% if book.errors.any? %>
+    <div class="error-message">
+        <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+        <ul>
+            <% book.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+
+    <div>
+        <%= form.label :author_id, style: "display: block" %>
+        <%= form.collection_select :author_id, Author.all, :id, :name, include_blank: "Select an author" %>
+    </div>
+
+
+    <div>
+        <% if book.cover_art.attached? %>
+        <p><strong>Current Cover Art:</strong></p>
+        <%= image_tag(book.cover_art, class: 'cover-preview') %>
+        <% end %>
+        <%= form.label :cover_art %>
+        <%= form.file_field :cover_art %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+    <% end %>
+</div>

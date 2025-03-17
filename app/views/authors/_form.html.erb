@@ -1,0 +1,28 @@
+<div class="form-container">
+    <%= form_with(model: author) do |form| %>
+    <% if author.errors.any? %>
+    <div class="error-message">
+        <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+        <ul>
+            <% author.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :bio %>
+        <%= form.text_area :bio %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+    <% end %>
+</div>

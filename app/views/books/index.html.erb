@@ -1,0 +1,24 @@
+<% if notice %>
+<p class="notice"><%= notice %></p>
+<% end %>
+
+<% content_for :title, "Books" %>
+
+<h1>Books</h1>
+
+<div class="book-list">
+    <% @books.each do |book| %>
+    <div class="book-item">
+        <h2><%= book.name %></h2>
+        <p><%= truncate(book.description, length: 120) %></p>
+        <% if book.cover_art.attached? %>
+        <%= image_tag book.cover_art, class: 'cover-preview' %>
+        <% end %>
+        <div class="book-links">
+            <%= link_to "Show this book", book %>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<%= link_to "New Book", new_book_path, class: 'new-book-link' %>
