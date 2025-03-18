@@ -15,6 +15,7 @@ gem 'puma', '>= 5.0'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 gem 'avo', '~> 3.16', '>= 3.16.2'
+gem 'byebug', '~> 11.1', '>= 11.1.3'
 gem 'rspec-rails', '~> 7.1', '>= 7.1.1'
 gem 'rubocop-rails', '~> 2.30', '>= 2.30.3'
 

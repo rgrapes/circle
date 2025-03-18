@@ -22,7 +22,7 @@ RSpec.describe 'books/edit', type: :view do
       assert_select 'input[name=?]', 'book[name]'
 
       assert_select 'textarea[name=?]', 'book[description]'
-
-      assert_select 'select[name=?]', 'book[author_id]'    end
+      assert_select 'select[name=?]', 'book[author_id]'
+    end
   end
 end

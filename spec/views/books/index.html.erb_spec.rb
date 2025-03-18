@@ -20,7 +20,7 @@ RSpec.describe 'books/index', type: :view do
 
   it 'renders a list of books' do
     render
-    
+
     assert_select 'div.book-item', text: /Name/, count: 2
     assert_select 'div.book-item', text: /Description/, count: 2
   end
