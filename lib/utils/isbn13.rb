@@ -18,7 +18,7 @@ module Utils
     # 1. Take each digit, from left to right and multiply them alternatively by 1 and 3
     # 2. Sum those numbers
     # 3. Take mod 10 of the summed figure
-    # 4. Subtract 10 and if the end number is 10, make it 0
+    # 4. Subtract from 10 and if the end number is 10, make it 0
     # 
     # Example for 978014300723:
     # 
