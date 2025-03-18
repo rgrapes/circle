@@ -26,11 +26,19 @@
         <%= form.collection_select :author_id, Author.all, :id, :name, include_blank: "Select an author" %>
     </div>
 
+    <div>
+        <%= form.label ':isbn', "ISBN", style: "display: block" %>
+        <%= form.text_field :isbn %>
+    </div>
 
     <div>
         <% if book.cover_art.attached? %>
         <p><strong>Current Cover Art:</strong></p>
         <%= image_tag(book.cover_art, class: 'cover-preview') %>
+        <br>
+        <label>
+            <%= check_box_tag 'remove_cover_art', '1' %> Remove cover art
+        </label>
         <% end %>
         <%= form.label :cover_art %>
         <%= form.file_field :cover_art %>

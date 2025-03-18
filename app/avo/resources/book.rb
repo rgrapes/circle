@@ -14,6 +14,7 @@ module Avo
         field :name, as: :text
         field :description, as: :textarea
         field :author_id, as: :number
+        field :isbn, as: :text
         field :cover_art, as: :file
         field :author, as: :belongs_to
       end

@@ -33,6 +33,9 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
+      # Remove cover art if checkbox is checked
+      @book.cover_art.purge if params[:remove_cover_art] == '1'
+
       redirect_to @book, notice: 'Book was successfully updated.', status: :see_other
     else
       render :edit, status: :unprocessable_entity
@@ -54,6 +57,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.expect(book: %i[name description author_id])
+    params.expect(book: %i[name description author_id cover_art isbn remove_cover_art])
   end
 end
