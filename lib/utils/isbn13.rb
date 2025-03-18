@@ -34,16 +34,9 @@ module Utils
     # @raise [ArgumentError] If the ISBN is not exactly 12 digits
 
     def self.calculate_check_digit(isbn)
-      if isbn.length != 12
-        raise ArgumentError, 'Invalid ISBN length. Expected 12 (ISBN-13) digits, the 13th digit is calculated.'
-      end
-
-      sum = 0
-      isbn.chars.each_with_index do |digit, i|
-        multiplier = (i.even? ? 1 : 3)
-        sum += digit.to_i * multiplier
-      end
-      check_digit = (10 - (sum % 10)) % 10
+      raise ArgumentError, 'Invalid ISBN length. Expected 12 (ISBN-13) digits, the 13th digit is calculated.' unless isbn.length == 12
+    
+      check_digit = (10 - isbn.chars.each_with_index.sum { |d, i| d.to_i * (i.even? ? 1 : 3) } % 10) % 10
       check_digit.to_s
     end
   end
